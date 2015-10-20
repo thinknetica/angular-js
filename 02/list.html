@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+<table class="table">
+  <tr>
+    <th>Вершина</th>
+    <th>Высота</th>
+  </tr>
+  <tr ng-repeat="mount in mounts">
+    <td><a ng-href="/#/mount/{{mount.slug}}">{{mount.title}}</td>
+    <td>{{mount.alt}}</td>
+  </tr>
+</table>
+<button class="btn btn-primary" ng-click="pickMount()">На произвольную страницу</button>

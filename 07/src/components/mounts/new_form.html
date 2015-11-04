@@ -1,0 +1,30 @@
+<button ng-show="!displayNewForm" class="btn btn-success" ng-click='showNewForm()'>Добавить вершину</button>
+<div ng-show="displayNewForm">
+  <h2>Добавить вершину</h2>
+  <form>
+    <div class='form-group'>
+      <label>Название</label>
+      <input class='form-control' ng-model='newMount.title' />
+    </div>
+    <div class='form-group'>
+      <label>Горная система</label>
+      <select class='form-control' ng-model='newMount.mountainRange' ng-options="range.title for range in mountainRanges"></select>
+    </div>
+    <div class='form-group'>
+      <label>Slug</label>
+      <input class='form-control' ng-model='newMount.slug' />
+    </div>
+    <div class='form-group'>
+      <label>Высота</label>
+      <input class='form-control' type='number' ng-model='newMount.alt' />
+    </div>
+    <div class='form-group'>
+      <label>Фото</label>
+      {{counter}}
+      <input class='form-control' type='file' th-readfile='newMount.photo' preview='newMountPreview' th-change-count='counter' />
+      <img ng-src='{{newMountPreview}}' />
+    </div>
+    <button class='btn btn-primary' ng-click="addMount()">Добавить</button>
+    <button class='btn btn-default' ng-click="cancelAddingMount()">Отменить</button>
+  </form>
+</div>

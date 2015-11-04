@@ -7,4 +7,5 @@ gwp
 
 # Node
 npm-debug.log
+**/coverage
 **/node_modules

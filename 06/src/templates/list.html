@@ -1,0 +1,44 @@
+<ul class="nav nav-pills">
+  <li ng-class="{active: 'filterRange == range.title'}" ng-repeat="range in mountainRanges" ng-click='filterItems()'><a>{{range.title}}</a></li>
+</ul>
+
+<h1>{{title}}</h1>
+<table class="table">
+  <tr>
+    <th>Вершина</th>
+    <th>Высота</th>
+  </tr>
+  <tr ng-repeat="mount in mounts">
+    <td><a ng-href="mount/{{mount.objectId}}">{{mount.title}}</a></td>
+    <td>{{mount.alt}}</td>
+  </tr>
+</table>
+
+<h2>Добавить вершину</h2>
+<form>
+  <div class='form-group'>
+    <label>Название</label>
+    <input class='form-control' ng-model='newMount.title' />
+  </div>
+  <div class='form-group'>
+    <label>Горная система</label>
+    <select class='form-control' ng-model='newMount.country' ng-options="range.title for range in mountainRanges"></select>
+  </div>
+  <div class='form-group'>
+    <label>Slug</label>
+    <input class='form-control' ng-model='newMount.slug' />
+  </div>
+  <div class='form-group'>
+    <label>Высота</label>
+    <input class='form-control' type='number' ng-model='newMount.alt' />
+  </div>
+  <button class='btn btn-primary' ng-click="addMount()">Добавить</button>
+</form>
+
+<div ng-controller='newMountRange'>
+  <h2>Добавить горную цепь</h2>
+  <input ng-model="newRangeTitle" ng-keydown="addRange($event)" />
+  <ul>
+    <li ng-repeat="range in mRanges">{{range.title}}</li>
+  </ul>
+</div>

@@ -1,0 +1,36 @@
+<h2>Добавить вершину</h2>
+<form name="form" novalidate="">
+  <div class='form-group'>
+    <label>Название</label>
+    <input class='form-control' ng-model='newMount.title' name="title" required="" />
+    <p style="color: red;" ng-show="form.title.$touched && form.title.$error.required">Обязательное поле</p>
+  </div>
+  <div class='form-group'>
+    <label>Горная система</label>
+    <select class='form-control' ng-model='newMount.mountainRange' ng-options="range.title for range in mountainRanges" name='mountainRange' required=""></select>
+    <p style="color: red;" ng-show="form.mountainRange.$touched && form.mountainRange.$error.required">Обязательное поле</p>
+  </div>
+  <div class='form-group'>
+    <label>Slug</label>
+    <input class='form-control' ng-model='newMount.slug' name='slug' required="" ng-pattern="/^[a-zA-Z]+$/" />
+    <div ng-messages="form.slug.$error" ng-show="form.slug.$touched">
+      <p style="color: red;" ng-message="required">Обязательное поле</p>
+      <p style="color: red;" ng-message="pattern">Только английские буквы</p>
+    </div>
+  </div>
+  <div class='form-group'>
+    <label>Высота</label>
+    <input class='form-control' type='number' ng-model='newMount.alt' min="100" max="8848" name="alt" required=""/>
+    <div ng-messages="form.alt.$error" ng-show="form.alt.$touched">
+      <p style="color: red;" ng-message="required">Обязательное поле</p>
+      <p style="color: red;" ng-message="min">Вершина не может быть ниже 100 метров</p>
+      <p style="color: red;" ng-message="max">Вершина не может быть выше Эвереста</p>
+    </div>
+  </div>
+  <div class='form-group'>
+    <label>Фото</label>
+    <input class='form-control' type='file' th-readfile='newMount.photo' preview='newMountPreview' />
+    <img ng-src='{{newMountPreview}}' />
+  </div>
+  <button class='btn btn-primary' ng-click="addMount()" ng-disabled="form.$invalid">Добавить</button>
+</form>

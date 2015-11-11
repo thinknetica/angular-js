@@ -1,0 +1,12 @@
+<form class="form-inline">
+  <div class='form-group'>
+    <input class='form-control' ng-model='newRangeTitle' />
+  </div>
+  <button class='btn btn-primary' ng-click="addRange()">Добавить</button>
+</form>
+
+
+<h3>Горные системы</h3>
+<ol>
+  <li ng-repeat="range in mountainRanges">{{range.title}}</li>
+</ol>

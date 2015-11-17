@@ -1,28 +1,16 @@
-describe('thChangeCount directive', function(){
-  var $compile, $scope, directiveElem;
+angular.module('thSample').controller('MountsController', function(MountsCollection, MountainRange){
+  this.pageTitle = "Альпы";
 
-  beforeEach(function(){
-    module('thSample');
+  var allMounts = MountsCollection.all();
+  this.all = allMounts;
 
-    inject(function(_$compile_, $rootScope){
-      $compile = _$compile_;
-      $scope = $rootScope.$new();
-    });
+  this.mountainRanges = MountainRange.all();
+  this.filterRange = null;
 
-    $scope.count = 0;
-
-    directiveElem = getCompiledElement();
-  });
-
-  function getCompiledElement(){
-    var element = angular.element('<input th-change-count="count" type="file" />');
-    var compiledElement = $compile(element)($scope);
-    $scope.$digest();
-    return compiledElement;
+  this.filterMountsByCountry = function (country) {
+    this.all = allMounts.filter(function(m){
+      return m.country == country.title
+    })
   }
 
-  it('changes counter', function(){
-    directiveElem.triggerHandler('change');
-    expect($scope.count).toEqual(1);
-  });
-});
+})

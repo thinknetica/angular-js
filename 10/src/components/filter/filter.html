@@ -1,0 +1,7 @@
+<h5 style='margin-top: 40px;'>{{title}}</h5>
+<ul class="nav nav-pills">
+  <li ng-repeat="item in filterItems" ng-class="{active: isActiveItem(item)}">
+    <a ng-click='filterBy(item)'>{{item.title}}</a>
+  </li>
+</ul>
+<ng-transclude></ng-transclude>

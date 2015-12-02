@@ -1,0 +1,8 @@
+<div class="b-tweets__wrapper">
+  <ul>
+    <li ng-repeat="tweet in tweets track by $index">
+      <a ng-href="http://twitter.com/{{tweet.user}}">@{{tweet.user}}</a>:
+      <span ng-bind-html="tweet.body | linky:'_blank'"></span>
+    </li>
+  </ul>
+</div>

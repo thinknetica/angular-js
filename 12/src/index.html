@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app='thSample'>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <base href="/">
+  </head>
+  <body style="padding: 0px 100px;">
+    <ul class="nav nav-pills">
+      <li><a href="/">Вершины</a></li>
+      <li><a href="/new">Добавить вершину</a></li>
+    </ul>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ng-view></ng-view>
+        </div>
+        <div class="col-md-4">
+          <th-tweets />
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://code.angularjs.org/1.4.7/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-resource.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-messages.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-sanitize.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="services/mounts.collection.js"></script>
+    <script src="services/mountain_ranges.collection.js"></script>
+    <script src="services/countries.collection.js"></script>
+    <script src="services/notification.factory.js"></script>
+    <script src="services/tweets.factory.js"></script>
+    <script src="models/mount.model.js"></script>
+    <script src="shared/readfile.directive.js" ></script>
+    <script src="components/mounts/index.controller.js" ></script>
+    <script src="components/mounts/show.controller.js" ></script>
+    <script src="components/mounts/new.controller.js" ></script>
+    <script src="components/mounts/feet.filter.js" ></script>
+    <script src="components/tweets/tweets.directive.js" ></script>
+    <script src="components/filter/filter.directive.js" ></script>
+    <script src="components/mountain_ranges/index.controller.js" ></script>
+  </body>
+</html>

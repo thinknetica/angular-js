@@ -1,0 +1,58 @@
+<h2>Добавить вершину</h2>
+<form name="form" novalidate="">
+  <div class='form-group'>
+    <label>Название</label>
+    <input class='form-control' ng-model='newMount.title' name="title" required="" />
+    <ng-messages for="form.title.$error" role="alert" ng-show="form.title.$touched">
+      <ng-messages-include src="components/mounts/error_messages.html"></ng-messages-include>
+    </ng-messages>
+  </div>
+  <div class='form-group'>
+    <label>Страна</label>
+    <select class='form-control' ng-model='newMount.country' ng-options="country.title for country in countries" name='country' required=""></select>
+    <ng-messages for="form.country.$error" role="alert" ng-show="form.country.$touched">
+      <ng-messages-include src="components/mounts/error_messages.html"></ng-messages-include>
+    </ng-messages>
+  </div>
+  <div class='form-group'>
+    <label>Горная система</label>
+    <select class='form-control' ng-model='newMount.mountainRange' ng-options="range.title for range in mountainRanges" name='mountainRange' required=""></select>
+    <ng-messages for="form.mountainRange.$error" role="alert" ng-show="form.mountainRange.$touched">
+      <ng-messages-include src="components/mounts/error_messages.html"></ng-messages-include>
+    </ng-messages>
+  </div>
+  <div class='form-group'>
+    <label>Slug</label>
+    <input class='form-control' ng-model='newMount.slug' name='slug' required="" th-url-validator />
+    <ng-messages for="form.slug.$error" role="alert" ng-show="form.slug.$touched">
+      <ng-messages-include src="components/mounts/error_messages.html"></ng-messages-include>
+    </ng-messages>
+  </div>
+  <div class='form-group'>
+    <label>Высота</label>
+    <input class='form-control' ng-model='newMount.alt' min="100" max="8848" name="alt" required="" th-numbers-formatter />
+    <ng-messages for="form.alt.$error" role="alert" ng-show="form.alt.$touched">
+      <ng-messages-include src="components/mounts/error_messages.html"></ng-messages-include>
+    </ng-messages>
+  </div>
+  <div class='form-group'>
+    <label>Описание</label>
+    <div contenteditable="" th-editor ng-model='newMount.desc' style="border: 1px solid #ccc; min-height: 50px" name='desc' required=""></div>
+    <ng-messages for="form.desc.$error" role="alert" ng-show="form.desc.$touched">
+      <ng-messages-include src="components/mounts/error_messages.html"></ng-messages-include>
+    </ng-messages>
+  </div>
+  <div class='form-group'>
+    <label>Фото</label>
+    <input class='form-control' type='file' th-readfile='newMount.photo' preview='newMountPreview' />
+    <img ng-src='{{newMountPreview}}' />
+  </div>
+  <div class='form-group'>
+    <label>Первое восхождение</label>
+    <input class='form-control' ng-model='newMount.firstAscent' name='firstAscent' required="" th-date-parser />
+    <ng-messages for="form.firstAscent.$error" role="alert" ng-show="form.firstAscent.$touched">
+      <ng-messages-include src="components/mounts/error_messages.html"></ng-messages-include>
+    </ng-messages>
+  </div>
+  <button class='btn btn-primary' ng-click="addMount()" type='submit' ng-disabled="form.$invalid">Добавить</button>
+</form>

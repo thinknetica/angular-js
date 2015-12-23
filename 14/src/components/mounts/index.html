@@ -1,0 +1,19 @@
+<h2>{{mounts.pageTitle}}</h2>
+<th-filter filter='mounts.filterMountsByRange(item)' filter-items='mounts.mountainRanges' title='Фильтр по регионам'>
+  <table class="table">
+    <tr>
+      <th>Фото</th>
+      <th>Название</th>
+      <th>Страна</th>
+      <th>Горная система</th>
+      <th>Высота</th>
+    </tr>
+    <tr ng-repeat="mount in mounts.all">
+      <td><img ng-src="{{mount.imageUrl()}}" width="100px" /></td>
+      <td><a ng-href="mount/{{mount.objectId}}">{{mount.title}}</a></td>
+      <td>{{mount.country}}</td>
+      <td><a th-filter-by="mount.mountainRange">{{mount.mountainRange.title}}</a></td>
+      <td>{{mount.alt | feet:'floor'}}</td>
+    </tr>
+  </table>
+</th-filter>
